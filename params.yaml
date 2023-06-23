@@ -1,0 +1,35 @@
+# This contains params to be used by the stages to train or predict
+base:
+  project: simple-dvc-project
+  random_state: 42
+  target_col: Response
+  test_size: 0.2
+
+data_source:
+  gdrive_source: https://drive.google.com/file/d/1XlLaF2b43eAgEZw0L7fMIZUI9x1YnCPz/view?usp=drive_link
+  
+artifacts:
+  artifacts_dir: artifacts
+
+  raw_local_data_dir: artifacts/raw_local_data_dir
+  raw_local_data: artifacts/raw_local_data_dir/data.csv
+
+  split_data:
+    processed_data_dir: artifacts/processed_data
+    train_path: artifacts/processed_data/train.csv
+    test_path: artifacts/processed_data/test.csv
+
+  reports:
+    reports_dir: artifacts/report
+    params: artifacts/report/params.json
+    scores: artifacts/report/scores.json
+
+  model_dir: artifacts/saved_models
+  model_path: artifacts/saved_models/model.joblib
+
+
+estimators:
+  ElasticNet:
+    params:
+      alpha: 0.7
+      l1_ratio: 0.4
