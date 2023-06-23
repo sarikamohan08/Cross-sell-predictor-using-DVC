@@ -1,0 +1,20 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src\stage_01_load_and_save.py --config=params.yaml
+    deps:
+    - path: src/stage_01_load_and_save.py
+      md5: dbc1298072744212d17a14f66d2f2485
+      size: 1205
+    - path: src/utils/common.py
+      md5: e05893d4b846dd710b56f85ca3406e17
+      size: 1221
+    params:
+      params.yaml:
+        artifacts.raw_local_data: artifacts/raw_local_data_dir/data.csv
+        data_source.gdrive_source: 
+          https://drive.google.com/file/d/1XlLaF2b43eAgEZw0L7fMIZUI9x1YnCPz/view?usp=drive_link
+    outs:
+    - path: artifacts/raw_local_data_dir/data.csv
+      md5: e46d6b9739f1fdbf2e3ecbc315023e66
+      size: 83906
