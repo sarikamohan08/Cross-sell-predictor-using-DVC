@@ -6,8 +6,8 @@ base:
   test_size: 0.2
 
 data_source:
-  gdrive_source: https://drive.google.com/file/d/1XlLaF2b43eAgEZw0L7fMIZUI9x1YnCPz/view?usp=drive_link
-  
+  source_directory: 'experiments/data.csv' 
+
 artifacts:
   artifacts_dir: artifacts
 
@@ -29,7 +29,9 @@ artifacts:
 
 
 estimators:
-  ElasticNet:
+   RandomForestClassifier:
     params:
-      alpha: 0.7
-      l1_ratio: 0.4
+      n_estimators: 100
+      
+      
+      
