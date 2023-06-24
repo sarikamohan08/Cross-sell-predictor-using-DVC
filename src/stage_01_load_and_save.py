@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.DEBUG, format=logging_str)
 def get_data(config_path):
     config = read_params(config_path)
 
-    data_path = config["data_source"]["gdrive_source"]
+    data_path = config["data_source"]["source_directory"]
     artifacts_dir = config["artifacts"]["artifacts_dir"]
     raw_local_data_dir = config["artifacts"]["raw_local_data_dir"]
     raw_local_data = config["artifacts"]["raw_local_data"]
@@ -24,7 +24,8 @@ def get_data(config_path):
 
     create_dir(dirs=[artifacts_dir, raw_local_data_dir])
 
-    df = pd.read_csv(data_path, sep=";", delimiter='\t')
+    df = pd.read_csv(data_path, sep=",")
+    print(df)
 
     save_local_df(df, raw_local_data, header=True)
 
